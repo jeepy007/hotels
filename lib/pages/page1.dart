@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:hotels/main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'calendar_page.dart';
 
 
 
@@ -16,7 +17,7 @@ const d_green = Color(0xFF54D3C2);
 }
 
 
-class MyApp extends StatelessWidget  {
+class  MyAppBar  extends StatelessWidget  {
   @override 
   Widget build(BuildContext context) { 
     return MaterialApp(
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget  {
   @override 
   Widget build(BuildContext context) {  
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: AppBar(),
 
       body: SingleChildScrollView(
         child: Column(
@@ -133,7 +134,13 @@ class MyApp extends StatelessWidget  {
                             Radius.circular(25)
                             ),
                         ),
-                        child: ElevatedButton(onPressed: null,
+                        child: ElevatedButton(onPressed: (() {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            return CalendarPage();
+                          },
+                          ),
+                          );
+                        }),
                          child: Icon(Icons.search,
                          size: 26,
                          ),
