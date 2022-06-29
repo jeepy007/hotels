@@ -7,8 +7,6 @@ import 'calendar_page.dart';
 
 
 
-
-
 const d_green = Color(0xFF54D3C2);
 
 
@@ -17,7 +15,7 @@ const d_green = Color(0xFF54D3C2);
 }
 
 
-class  MyAppBar  extends StatelessWidget  {
+class  MyApp extends StatelessWidget  {
   @override 
   Widget build(BuildContext context) { 
     return MaterialApp(
@@ -33,7 +31,7 @@ class  MyAppBar  extends StatelessWidget  {
   @override 
   Widget build(BuildContext context) {  
     return Scaffold(
-      appBar: AppBar(),
+      appBar: MyAppBar(),
 
       body: SingleChildScrollView(
         child: Column(
@@ -47,39 +45,87 @@ class  MyAppBar  extends StatelessWidget  {
   }
  }
 
- class MyAppBar extends StatelessWidget implements PreferredSizeWidget { 
+
+class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const MyAppBar({Key? key}) : super(key: key);
+
   Size get preferredSize => new Size.fromHeight(50);
-  @override 
-  Widget build(BuildContext context)  { 
+  @override
+  Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(onPressed: null,
-      icon:Icon(Icons.arrow_back,
-      color: Colors.grey[800],
-      size: 20,)
+      leading: IconButton(
+        icon: Icon(
+          Icons.arrow_back,
+          color: Colors.grey[800],
+          size: 20,
+        ),
+        onPressed: null,
       ),
-      title: Text('Explore', style: GoogleFonts.nunito(
-        color: Colors.black, 
-        fontSize: 25,
-        fontWeight: FontWeight.w800,
+      title: Text(
+        'Explore',
+        style: GoogleFonts.nunito(
+          color: Colors.black,
+          fontSize: 22,
+          fontWeight: FontWeight.w800,
+        ),
       ),
-      ),
-      centerTitle: true,
       actions: [
-         IconButton(onPressed: null,
-      icon:Icon(Icons.favorite_outline_outlined,
-      color: Colors.grey,
-      size: 20,)
-      ),
-       IconButton(onPressed: null,
-      icon:Icon(Icons.place,
-      color: Colors.grey,
-      size: 20,)
-      ),
+        IconButton(
+          icon: Icon(
+            Icons.favorite_outline_rounded,
+            color: Colors.grey[800],
+            size: 20,
+          ),
+          onPressed: null,
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.place,
+            color: Colors.grey[800],
+            size: 20,
+          ),
+          onPressed: null,
+        ),
       ],
+      centerTitle: true,
       backgroundColor: Colors.white,
     );
   }
- } 
+}
+
+//  class MyAppBar extends StatelessWidget implements PreferredSizeWidget { 
+//   Size get preferredSize => new Size.fromHeight(50);
+//   @override 
+//   Widget build(BuildContext context)  { 
+//     return AppBar(
+//       leading: IconButton(onPressed: null,
+//       icon:Icon(Icons.arrow_back,
+//       color: Colors.grey[800],
+//       size: 20,)
+//       ),
+//       title: Text('Explore', style: GoogleFonts.nunito(
+//         color: Colors.black, 
+//         fontSize: 25,
+//         fontWeight: FontWeight.w800,
+//       ),
+//       ),
+//       centerTitle: true,
+//       actions: [
+//          IconButton(onPressed: null,
+//       icon:Icon(Icons.favorite_outline_outlined,
+//       color: Colors.grey,
+//       size: 20,)
+//       ),
+//        IconButton(onPressed: null,
+//       icon:Icon(Icons.place,
+//       color: Colors.grey,
+//       size: 20,)
+//       ),
+//       ],
+//       backgroundColor: Colors.white,
+//     );
+//   }
+//  } 
 
 
  class SearchSection extends StatelessWidget { 
@@ -287,10 +333,175 @@ class  MyAppBar  extends StatelessWidget  {
  }
 
 
- class HotelCard extends StatelessWidget {
+//  class HotelCard extends StatelessWidget {
+//   final Map hotelData;
+//   HotelCard(this.hotelData);
+//   @override 
+//   Widget build(BuildContext context) {
+//     return Container(
+//       margin: EdgeInsets.all(10),
+//       height: 230,
+//       width: double.infinity,
+//       decoration: BoxDecoration(
+//         color: Colors.white,
+//         borderRadius: BorderRadius.all(Radius.circular(18),
+//         ),
+//         boxShadow: [
+//            BoxShadow(
+//           color: Colors.grey.shade200,
+//           spreadRadius: 4,
+//           blurRadius: 6,
+//           offset: Offset(0, 3),
+//         ),
+//         ],
+//       ),
+//       child: Column(
+//         children: [
+//           Container(
+//             height: 140,            
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.only(
+//                 topLeft: Radius.circular(18),
+//                 topRight: Radius.circular(18),
+//               ),
+//               color: Colors.red,
+//               image: DecorationImage(image: AssetImage(hotelData ['picture'],
+//               ),
+//               fit: BoxFit.cover,
+//               ),
+
+//             ),
+//             child: Stack(
+//               children: [
+                
+//                 Positioned(
+//                   top: 5,
+//                   right: -15,
+//                   child: MaterialButton(
+//                     color: Colors.white,
+//                     shape: CircleBorder(),
+//                     onPressed: () {
+//                 },
+//                 child: Icon(Icons.favorite_border_rounded),
+//                 ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//           // Container(
+//           //   margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+//           //   child: Row(
+//           //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           //     children: [
+//           //       Text(hotelData['titile'].toString(),
+//           //       style: GoogleFonts.nunito(
+//           //         fontSize: 18,
+//           //         fontWeight: FontWeight.w800,
+//           //       ),
+//           //       ),
+//           //       // Text('$' + hotelData['price']),
+//           //       Text(hotelData['distance'].toString(),
+//           //        style: GoogleFonts.nunito(
+//           //         fontSize: 18,
+//           //         fontWeight: FontWeight.w800,
+//           //         ),
+//           //       ),
+//           //       Text(hotelData['review'],
+//           //        style: GoogleFonts.nunito(
+//           //         fontSize: 18,
+//           //         fontWeight: FontWeight.w800,
+//           //         ),
+//           //       ),
+//           //     ],
+//           //   ),
+//           // ),
+//           Container(
+//             margin: EdgeInsets.symmetric(
+//               horizontal: 10,
+//             ),
+//             child: Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               children: [
+//                 Text(hotelData['place'],
+//                 style: GoogleFonts.nunito(
+//                   fontSize: 14,
+//                   color: Colors.grey[500],
+//                   fontWeight: FontWeight.w400,
+
+//                 ),
+//                 ),
+//                 Row(
+//                   children: [
+//                     Icon(Icons.place,
+//                     color: d_green,
+//                     size: 14,
+//                     ),
+//                     Text(hotelData['distance'].toString() + "km to city",
+//                     style: GoogleFonts.nunito(
+//                       fontSize: 14,
+//                       color: Colors.grey[500],
+//                       fontWeight: FontWeight.w400,
+//                     ),
+//                     ),
+//                   ],
+//                 ),
+//                 Text('per night',
+//                 style: GoogleFonts.nunito(
+//                   fontSize: 14,
+//                   color: Colors.grey.shade800,
+//                   fontWeight: FontWeight.w400,
+//                 ),)
+//               ],
+//             ),
+//           ),
+//           Container(
+//             margin: EdgeInsets.fromLTRB(10, 3, 10, 0),
+//             child: Row(
+//               children: [
+//                 Row(
+//                   children: [
+//                     Icon(Icons.star_rate, 
+//                     color: d_green,
+//                     ),
+//                      Icon(Icons.star_rate, 
+//                     color: d_green,
+//                     ),
+//                      Icon(Icons.star_rate, 
+//                     color: d_green,
+//                     ),
+//                      Icon(Icons.star_rate, 
+//                     color: d_green,
+//                     ),
+//                      Icon(Icons.star_rate, 
+//                     color: d_green,
+//                     ),
+//                     SizedBox(width: 20,),
+
+//                   ],
+                  
+//                 ),
+//                 Text(hotelData['distance'].toString()  +  'reviews', 
+//                 style: GoogleFonts.nunito(
+//                   fontSize: 14,
+//                   color: Colors.grey[500],
+//                   fontWeight: FontWeight.w400,
+//                 ),)
+//               ],
+//             ),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+//  }
+
+
+
+
+class HotelCard extends StatelessWidget {
   final Map hotelData;
   HotelCard(this.hotelData);
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10),
@@ -298,113 +509,113 @@ class  MyAppBar  extends StatelessWidget  {
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(18),
+        borderRadius: BorderRadius.all(
+          Radius.circular(18),
         ),
         boxShadow: [
-           BoxShadow(
-          color: Colors.grey.shade200,
-          spreadRadius: 4,
-          blurRadius: 6,
-          offset: Offset(0, 3),
-        ),
+          BoxShadow(
+            color: Colors.grey.shade200,
+            spreadRadius: 4,
+            blurRadius: 6,
+            offset: Offset(0, 3),
+          ),
         ],
       ),
       child: Column(
         children: [
           Container(
-            height: 140,            
+            height: 140,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(18),
                 topRight: Radius.circular(18),
               ),
-              color: Colors.red,
-              image: DecorationImage(image: AssetImage(hotelData ['picture'],
+              image: DecorationImage(
+                image: AssetImage(
+                  hotelData['picture'],
+                ),
+                fit: BoxFit.cover,
               ),
-              fit: BoxFit.cover,
-              ),
-
             ),
             child: Stack(
               children: [
-                
                 Positioned(
                   top: 5,
                   right: -15,
                   child: MaterialButton(
                     color: Colors.white,
                     shape: CircleBorder(),
-                    onPressed: () {
-                },
-                child: Icon(Icons.favorite_border_rounded),
+                    onPressed: () {},
+                    child: Icon(
+                      Icons.favorite_outline_rounded,
+                      color: d_green,
+                      size: 20,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  hotelData['title'],
+                  style: GoogleFonts.nunito(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
+                Text(
+                  '\$' + hotelData['price'],
+                  style: GoogleFonts.nunito(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
               ],
             ),
           ),
-          // Container(
-          //   margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //     children: [
-          //       Text(hotelData['titile'].toString(),
-          //       style: GoogleFonts.nunito(
-          //         fontSize: 18,
-          //         fontWeight: FontWeight.w800,
-          //       ),
-          //       ),
-          //       // Text('$' + hotelData['price']),
-          //       Text(hotelData['distance'].toString(),
-          //        style: GoogleFonts.nunito(
-          //         fontSize: 18,
-          //         fontWeight: FontWeight.w800,
-          //         ),
-          //       ),
-          //       Text(hotelData['review'],
-          //        style: GoogleFonts.nunito(
-          //         fontSize: 18,
-          //         fontWeight: FontWeight.w800,
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
           Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: 10,
-            ),
+            margin: EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(hotelData['place'],
-                style: GoogleFonts.nunito(
-                  fontSize: 14,
-                  color: Colors.grey[500],
-                  fontWeight: FontWeight.w400,
-
-                ),
+                Text(
+                  hotelData['place'],
+                  style: GoogleFonts.nunito(
+                    fontSize: 14,
+                    color: Colors.grey[500],
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
                 Row(
                   children: [
-                    Icon(Icons.place,
-                    color: d_green,
-                    size: 14,
+                    Icon(
+                      Icons.place,
+                      color: d_green,
+                      size: 14.0,
                     ),
-                    Text(hotelData['distance'].toString() + "km to city",
-                    style: GoogleFonts.nunito(
-                      fontSize: 14,
-                      color: Colors.grey[500],
-                      fontWeight: FontWeight.w400,
-                    ),
+                    Text(
+                      hotelData['distance'].toString() + ' km to city',
+                      style: GoogleFonts.nunito(
+                        fontSize: 14,
+                        color: Colors.grey[500],
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ],
                 ),
-                Text('per night',
-                style: GoogleFonts.nunito(
-                  fontSize: 14,
-                  color: Colors.grey.shade800,
-                  fontWeight: FontWeight.w400,
-                ),)
+                Text(
+                  'per night',
+                  style: GoogleFonts.nunito(
+                    fontSize: 14,
+                    color: Colors.grey.shade800,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               ],
             ),
           ),
@@ -414,37 +625,49 @@ class  MyAppBar  extends StatelessWidget  {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.star_rate, 
-                    color: d_green,
+                    Icon(
+                      Icons.star_rate,
+                      color: d_green,
+                      size: 14.0,
                     ),
-                     Icon(Icons.star_rate, 
-                    color: d_green,
+                    Icon(
+                      Icons.star_rate,
+                      color: d_green,
+                      size: 14.0,
                     ),
-                     Icon(Icons.star_rate, 
-                    color: d_green,
+                    Icon(
+                      Icons.star_rate,
+                      color: d_green,
+                      size: 14.0,
                     ),
-                     Icon(Icons.star_rate, 
-                    color: d_green,
+                    Icon(
+                      Icons.star_rate,
+                      color: d_green,
+                      size: 14.0,
                     ),
-                     Icon(Icons.star_rate, 
-                    color: d_green,
+                    Icon(
+                      Icons.star_border,
+                      color: d_green,
+                      size: 14.0,
                     ),
-                    SizedBox(width: 20,),
-
                   ],
-                  
                 ),
-                Text(hotelData['distance'].toString()  +  'reviews', 
-                style: GoogleFonts.nunito(
-                  fontSize: 14,
-                  color: Colors.grey[500],
-                  fontWeight: FontWeight.w400,
-                ),)
+                SizedBox(width: 20),
+                Text(
+                  hotelData['review'].toString() + ' reviews',
+                  style: GoogleFonts.nunito(
+                    fontSize: 14,
+                    color: Colors.grey[500],
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
   }
- }
+}
+
+	
